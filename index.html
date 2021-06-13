@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .all{
+            width: 1400px;
+            height: 2000px;
+            margin: auto;
+        }
+        .header{
+            display: flex;
+            flex-wrap: wrap;
+            width:1364px;
+            background: black;
+            margin: auto;
+        }
+        .header div{         
+            height: 50px;  
+            text-align: center;
+            line-height: 50px;  
+            margin-left: 32px;      
+        }
+        .header div a{
+            text-decoration: none;
+            font-size: 17px;
+            color: white;
+        }
+        .header div a:hover{
+            color: orange;
+        }
+        input{
+            width: 100px;
+            background-color:rgb(51, 51,51);
+            border-style: none;
+            float: left;
+            margin-left: 5px;
+            margin-top: 15px;
+            color: rgb(105,111,111);
+        }
+        .search{
+	    	background:url(./images/4.png) center center no-repeat;  
+            width: 180px;  	
+	    }
+        .middle{
+            width: 1364px;
+            height: 750px;
+            margin: auto;
+        }
+        .left{
+            float: left;
+            width: 700px;
+            height: 750px;
+        }
+        .right{
+            float: right;
+            width: 650px;
+            height: 750px;
+        }
+        @keyframes animation1 {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .pic1{
+            margin-top: 50px;
+            margin-left: 150px;
+            height: 300px;
+            width: 300px;
+            border-radius: 50%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: animation1 3s linear 1s;
+            animation-iteration-count: infinite;    
+        }
+        .music{
+            height: 330px;
+            width: 600px;
+            border: 1px solid white;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+        #playBtn{
+            height: 50px;
+            width: 49px;
+            float: left;
+            background: url(./images/6.jpg) no-repeat -158px 6px;
+        }
+        #prograssBar {
+            float: left;
+            width: 350px;
+            height: 4px;
+            margin: 25px 20px 0 10px;   
+            background:lightgrey;        
+        }
+        .prograssBar {
+            width: 0px;
+            height: 4px;
+            background: #ffcd2d;
+        }
+        #bufBar {
+            width: 0px;
+            height: 4px;
+        }
+        .music #processBtn {
+            width: 10px;
+            height: 10px;
+            background: url(./images/6.jpg) -50px 0; 
+            margin-top:-6px;      
+        }
+        .times {
+            float: left;
+            margin: 2px 0 0 0;
+            font-size: 15px;
+            color:grey;
+        }
+        #mute {
+            width: 25px;
+            height: 25px;
+            float: left;
+            background: url(./images/6.jpg) no-repeat -42px 3px;
+            margin: 15px 20px 0 9px;
+        }
+        .music .download{
+            width: 200px;
+            height: 48px;
+            margin: 70px 0 0 150px;
+            background: url(./images/6.jpg) 0 -128px;
+            text-align: center;
+            line-height: 55px;           
+        }
+        .down{
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin: 18px 0 0 25px;
+            background: url(./images/6.jpg) 0 0;
+        }
+        .music .download a{
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+        }
+        .people{
+            width: 600px;
+            height: 120px;
+            margin: 60px 0 0 -50px;
+        }
+        .guo{
+            width: 100px;
+            height: 100px;
+            background: url(./images/郭子仪.jpg);
+            border-radius: 50%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            float: left;
+        }
+        .h5{
+            width: 450px;
+            height: 100px;
+            background: url(./images/show.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: 0 0 0 110px;
+        }
+        .p1{
+            font-size: 20px;
+            margin-left: 40px;
+            padding-top: 10px;
+            color: grey;
+        }
+        .gif{
+            margin-left: 40px;
+            float: left;
+        }
+        .sheep{
+            float: left;
+            font-size: 20px;
+            margin: 10px 0 0 10px;
+            color: rgb(95,94,148);
+        }
+        .go{
+            margin-left: 130px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .up p:nth-child(1){
+            font-size: 30px;
+            margin: 30px 0 0 300px; 
+        }
+        .up p:nth-child(2){
+            float: left;
+            margin-left: 150px;
+            font-size: 20px;
+        }
+        .up p:nth-child(3),.up p:nth-child(5){
+            float: left; 
+            font-size: 20px;
+            color: orange;
+        }
+        .up p:nth-child(4),.up p:nth-child(6){
+            float: left;
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        .ping{
+            float: left;
+            margin: 28px 0 10px 10px;
+        }
+        .up p:nth-child(8){
+            font-size: 20px;
+            color: orange;
+        }
+        .source{
+            margin-left: 200px;
+        }
+        #lrc_content{
+            width: 450px;
+            height: 550px;
+            margin-left: 250px;
+            overflow:auto;
+        }
+        .share{
+            width: 1000px;
+            height: 350px;
+            border: 1px solid white;
+            margin-left: 180px;
+        }
+        .comment{
+            font-size: 25px;
+            float: left;
+        }
+        .number{
+            margin-top: 30px;
+            font-size: 20px;
+            margin-left: 100px;
+        }
+        .touxiang{
+            width: 80px;
+            height: 80px;
+            float: left;
+            margin-top: 20px;
+        }
+        #sharebox{
+            width: 880px;
+            height: 150px;
+            margin-left: 20px;
+            background-color: white;
+            border: 1px solid lightgrey;
+            font-size: 25px; 
+            text-align: left;      
+        }
+        .smile{
+            width: 40px;
+            height: 40px;
+            float: left;
+            margin:20px 0 0 100px;
+        }
+        .count{
+            float: left;
+            margin: 30px 0 0 650px;
+        }
+        #btn{
+            width: 80px;
+            height: 50px;
+            background: orange;
+            color: white;
+            margin: 17px 0 0 30px;
+            font-size: 25px;
+        }
+        .great{
+            width: 1000px;
+            height: 500px;
+            border: 1px solid white;
+            margin-left: 180px;
+            
+        }
+        .greatword{
+            font-size: 25px;
+            float: left;
+        }
+        #ul{
+            margin-top: 130px;
+            font-size: 30px;
+            list-style: none;
+            margin-left: 100px;
+        }
+        .div0{
+            width: 220px;
+            height: 450px;
+            margin: 100px 0 0 0;   
+        }
+        .imglist{
+            float: left;
+            width: 150px;
+            height: 400px;
+        }
+        .imglist img{           
+            display: inline;
+            margin-left: 35px;
+        }
+        .imglist img:nth-child(2),img:nth-child(3){
+            width: 80px;
+            height: 80px;
+            margin-top: 50px;
+        }
+        ul li:nth-child(2n){
+            color:grey;
+            font-size: 25px;
+            margin-bottom:40px;
+        }
+        ul li:nth-child(2n+1){           
+            font-size: 25px;
+            margin-bottom:18px;
+        }
+        .div1{
+            width: 750px;
+            height: 500px;
+            float: left;
+            margin: -500px 0 0 50px;
+            overflow: hidden;
+        }
+        .div2{
+            width: 200px;
+            height: 400px;
+            margin-left: 800px;            
+        }
+        .one{
+            width: 200px;
+            height: 130px;
+        }
+        .one img{
+            width: 25px;
+            height: 25px;
+            margin-left: 20px;
+            margin-right: 15px;
+        }
+        .one a{
+            font-size: 22px;
+            color: black;
+            text-decoration: none;
+        }
+        .one a:nth-child(1){
+            margin: 0 0 0 150px;
+        }
+        .one a:nth-child(2){
+            margin: 0 0 10px 50px;
+        }
+        .fanye{
+            width: 800px;
+            height: 120px;
+            margin-left: 300px;
+            margin-top: 60px;
+        }
+        .fir{
+            width: 100px;
+            height: 100px;
+            background:orange;
+            border-radius: 50%;
+        }
+        .zuo,.sec,.thi,.fou,.sev,.rig{
+            width: 120px;
+            height: 120px;
+            background: lightgrey;
+            border-radius: 50%;
+        }
+        .fanye a{
+            font-size: 50px;
+            text-decoration: none;
+            color: black;
+            margin-right: 60px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="header">
+            <div><a href=""><img src="./images/2.jpg" alt=""></a></div>
+            <div><a href="">首页</a></div>
+            <div><a href="">榜单</a></div>
+            <div><a href="">歌手</a></div>
+            <div><a href="">下载酷我客户端</a></div>
+            <div><a href="">美女秀</a></div>
+            <div><a href="">酷我耳机</a></div>
+            <div><a href="">VIP会员</a></div>
+            <div><a href="">听</a></div>
+            <div><a href="">更多服务</a></div>
+            <div><a href="">登录</a></div>
+            <div class="search">
+                <input type="text" value="找到好音乐" >
+            </div>
+        </div>
+        <div class="middle">
+            <div class="left">
+                <div class="up">
+                    <p>喜羊羊</p>
+                    <p>专辑：</p>
+                    <p>儿歌大全</p>
+                    <p>歌手：</p>
+                    <p>华语群星</p>
+                    <p>分享</p>
+                    <img src="./images/7.jpg" class="ping">
+                    <p>评论</p>
+                    <p class="source">上传时间：2015-10-02 歌曲来源：网络</p>
+                </div>
+                <hr>
+                <div id="lrc_content" class="lrc_content">
+                    <p> 喜羊羊美羊羊懒羊羊沸羊羊</p>
+                    <p> 慢羊羊软绵绵红太狼灰太狼</p>
+                    <p> 别看我只是一只羊</p>
+                    <p> 绿草也为我变的更香</p>
+                    <p> 天空因为我变的更蓝</p>白云也为我变的柔软</p>
+                    <p> 别看我只是一只羊</p>
+                    <p> 羊儿的聪明难以想像</p>
+                    <p> 天再高心情一样奔放</p>
+                    <p> 每天都追赶太阳...</p>
+                    <p> 有什么难题去牵绊我都不会去心伤</p>
+                    <p> 有什么危险在我面前也不会去慌乱</p>
+                    <p> 就算有狼群把我追捕也当做游戏一场</p>
+                    <p> 在什么时间都爱开心笑容都会飞翔</p>
+                    <p> 就算会摔倒站得起来永远不会沮丧</p>
+                    <p> 在所有天气拥有叫人大笑的力量</p>
+                    <p> 虽然我只是羊… …</p>
+                    <p> 喜羊羊美羊羊懒羊羊沸羊羊</p>
+                    <p> 慢羊羊软绵绵红太狼灰太狼</p>
+                    <p> 别看我只是一只羊</p>
+                    <p> 绿草也为我变的更香</p>
+                    <p> 天空因为我变的更蓝</p>
+                    <p> 白云也为我变的柔软</p>
+                    <p> 有什么难题去牵绊我都不会去心伤</p>
+                    <p> 有什么危险在我面前也不会去慌乱</p>
+                    <p> 就算有狼群把我追捕也当做游戏一场</p>
+                    <p> 在什么时间都爱开心笑容都会飞翔</p>
+                    <p> 就算会摔倒站得起来永远不会沮丧</p>
+                    <p> 在所有天气拥有叫人大笑的力量</p>
+                    <p> 虽然我只是羊… …</p>
+                    <p> 喜羊羊美羊羊懒羊羊沸羊羊</p>
+                    <p> 慢羊羊软绵绵红太狼灰太狼</p>
+                </div>
+            </div>
+            <div class="right">
+                <img src="./images/5.jpg" class="pic1">
+                <audio autoplay="autoplay" id="mymusic">
+                <source src="./images/1.mp3" type="audio/mp3"></audio>
+                <div class="music">
+                    <div id="playBtn"></div>
+                    <div id="prograssBar">                  
+                        <div id="bufBar">
+                            <div class="prograssBar" id="processBar"></div>
+                            <a href="##" id="processBtn"></a>
+                        </div>                     
+                    </div>
+                    <div class="times">
+                        <p id="playTime" class="opacity">00:00</p>
+                    </div>
+                    <div class="sound" id="mute"></div>
+                    <div class="download">
+                        <div class="down"></div><a href="">免费下载这首歌</a>    
+                    </div>
+                    <div class="people">
+                        <div class="guo"></div>
+                        <div class="h5">
+                            <p class="p1">郭子仪——H5班</p>
+                            <img src="./images/gif.gif" class="gif" >
+                            <p class="sheep">喜羊羊与灰太狼</p>
+                            <a href="" class="go">去现场 ></a>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+        </div>
+        <hr>
+        <div class="bottom">
+            <div class="share">
+                <p class="comment">评论</p><p class="number">1921条评论</p>
+                <hr>
+                <img src="./images/郭子仪.jpg" class="touxiang">
+                <input type="text" id="sharebox" placeholder="分享你的音乐见解">
+                <img src="./images/smile.png" class="smile">
+                <p class="count">已输入0个字</p>
+                <button id="btn">评论</button>
+            </div>
+            <div class="great">
+                <p class="greatword">精彩评论</p>
+                <div class="div0">
+                    <div class="imglist">
+                        <img src="./images/郭子仪.jpg" class="touxiang">
+                        <img src="./images/3.jpg">
+                        <img src="./images/3.jpg">
+                    </div>
+                    <div class="div1">                    
+                        <ul id="ul"></ul>
+                    </div>
+                    <div class="div2">
+                        <div class="one">
+                            <a href="">分享</a>
+                            <a href="">23</a>
+                            <img src="./images/bg2.jpg">
+                            <a href="">回复</a>
+                        </div>
+                        <div class="one">
+                            <a href="">分享</a>
+                            <a href="">57</a>
+                            <img src="./images/bg2.jpg">
+                            <a href="">回复</a>
+                        </div>
+                        <div class="one">
+                            <a href="">分享</a>
+                            <a href="">93</a>
+                            <img src="./images/bg2.jpg">
+                            <a href="">回复</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fanye">
+                <a href="" class="zuo"> < </a>
+                <a href="" class="fir"> 1 </a>
+                <a href="" class="sec"> 2 </a>
+                <a href="" class="thi"> 3 </a>
+                <a href="" class="fou"> ... </a>
+                <a href="" class="sev"> 17</a>
+                <a href="" class="rig"> > </a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var mymusic = document.getElementById("mymusic");
+    var playBtn = document.getElementById("playBtn");
+    var playTime = document.getElementById("playTime");
+    var prograssBar = document.getElementById("prograssBar");
+    var processBtn = document.getElementById("processBtn");
+    var processBar = document.getElementById("processBar");
+    var mute = document.getElementById("mute");
+    var lrc_content = document.getElementById("lrc_content");
+    var sharebox = document.getElementById("sharebox");
+    var btn = document.getElementById("btn");
+    var ul = document.getElementById("ul");
+
+    var count = 1;
+    playBtn.onclick = function(){
+        if(count%2 != 0){
+            mymusic.play();
+            playBtn.style.backgroundPosition = "-203px -42px";
+        }
+        else{
+            mymusic.pause();
+            playBtn.style.backgroundPosition = "-158px 6px";
+        }
+        count++;
+    }
+    //播放时长与进度条
+    var time = setInterval(function(){
+        //播放时长
+        var cur = parseInt(mymusic.currentTime);
+        var min = parseInt(cur/60);
+        var sec = parseInt(cur%60);
+        min = min >= 10 ? min : "0" + min;
+        sec = sec >= 10 ? sec : "0" + sec;
+        playTime.innerHTML = min+":"+sec;
+        //进度条
+        var musicLength = mymusic.duration;
+        var ratio = (mymusic.currentTime / musicLength);
+        var len = prograssBar.offsetWidth;
+        processBar.style.width = (ratio*len)+"px";
+        processBtn.style.left = (ratio*len)+"px";
+    },1000)
+    
+    //静音效果
+    var num = 1;
+    mute.onclick = function(){
+        if(num%2!=0){
+            mymusic.muted = true;
+        }
+        else{
+            mymusic.muted = false;
+        }
+        num++;
+    }
+
+    btn.onclick = function(){
+        var data = sharebox.value;
+        var time = new Date();
+        var times = time.toLocaleString();
+        save(data,times);
+    }
+    window.onload = function() {
+        get();
+    }
+    function save(data,times){
+        var dataList = localStorage["dataList"];
+        if(dataList == "" || dataList == null || dataList == undefined) {
+            localStorage["dataList"] = "[]";
+        }
+        dataList = JSON.parse(localStorage["dataList"]);
+        var dataObj = {data:data,times:times};
+        dataList.push(dataObj);
+        localStorage["dataList"] = JSON.stringify(dataList);
+    }
+    function get() {
+        var dataList = localStorage["dataList"];
+        dataList = JSON.parse(dataList);
+        for(var i = 0; i < dataList.length; i++) {           
+            var li = document.createElement("li");          
+            li.innerHTML = dataList[i]["data"];
+            var lii = document.createElement("li");
+            lii.innerHTML = dataList[i]["times"];
+            ul.appendChild(li);
+            ul.appendChild(lii);
+        }
+    }
+
+</script>
+</html>
